@@ -1,8 +1,12 @@
 <?php 
 session_start();
-require "db.php";
-$_SESSION['username']="asd";
+require "./includes/db.php";
 $error="";
+
+if(!isset($_SESSION["username"])){
+    header("location: login.php?loginToSeePosts");
+    exit;
+}
 
 if(isset($_GET['id'])){
     $user = $_SESSION["username"];
@@ -40,11 +44,11 @@ if(isset($_GET['id'])){
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="./assets/style.css">
     <title>Document</title>
 </head>
 <body>
-    <?php include "header.php"; if($error) echo $error; ?>
+    <?php include "./templates/header.php"; if($error) echo $error; ?>
     <div class="formContainer">
     <form action="editPost.php?id=<?php echo $postID ?>" method="post" class="form">
         <label for="title">Title:</label><br>

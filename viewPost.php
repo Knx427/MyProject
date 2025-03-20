@@ -1,12 +1,13 @@
 <?php 
 session_start();
-require "db.php";
-$error="";
+require "./includes/db.php";
 
+$error="";
 if(!isset($_SESSION['username'])){
     header("location: login.php?loginToSeePost");
     exit;
 }
+
 if(isset($_GET['id'])){
     $user = $_SESSION["username"];
     $postID = $_GET['id'];
@@ -22,11 +23,11 @@ if(isset($_GET['id'])){
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="./assets/style.css">
     <title><?php echo $post['title']; ?></title>
 </head>
 <body>
-    <?php include "header.php" ?>
+    <?php include "./templates/header.php" ?>
 <div class="post">
                 <h1><a href="viewPost.php?id=<?php echo $post['id'] ?>" style="text-decoration: none; color: black;"><?php echo htmlspecialchars($post['title']) ?></a></h1>
                 <p><?php echo htmlspecialchars($post['content']) ?></p>
@@ -41,6 +42,6 @@ if(isset($_GET['id'])){
                     </a>
                 <?php } ?>
             </div>
-<?php include "footer.php" ?>
+<?php include "./templates/footer.php" ?>
 </body>
 </html>

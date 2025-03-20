@@ -1,8 +1,12 @@
 <?php 
 session_start();
-require "db.php";
-$_SESSION['username']="asd";
+require "./includes/db.php";
 $error="";
+
+if(!isset($_SESSION["username"])){
+    header("location: login.php?loginToSeePosts");
+    exit;
+}
 
 if(isset($_GET['id'])){
     $user = $_SESSION["username"];

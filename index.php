@@ -1,7 +1,7 @@
 <?php
 
 session_start();
-require "db.php";
+require "./includes/db.php";
 
 $random = [];
 $posts = [];
@@ -27,11 +27,11 @@ if($post){
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="./assets/style.css">
     <title>Home</title>
 </head>
 <body>
-    <?php include "header.php" ?>
+    <?php include "./templates/header.php" ?>
     <h1>Home Page</h1>
 
     <?php if (isset($_SESSION['username'])) { ?>
@@ -51,6 +51,6 @@ if($post){
         <?php if(!isset($_SESSION['username'])){?>
     <a href="login.php" class="gg"><p class="centered p"><strong>Login</strong> to see more!</p></a>
     <?php } ?> <br>
-<?php include "footer.php" ?>
+<?php include "./templates/footer.php" ?>
 </body>
 </html>

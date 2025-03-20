@@ -1,6 +1,6 @@
 <?php 
 session_start();
-require "db.php";
+require "./includes/db.php";
 
 $error="";
 if($_SERVER["REQUEST_METHOD"] == "POST"){
@@ -42,11 +42,11 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="./assets/style.css">
     <title>Login</title>
 </head>
 <body>
-    <?php include "header.php"; ?>
+    <?php include "./templates/header.php"; ?>
     <div class="formContainer">
     <h1>Register</h1>
     <p class="error"><?php echo $error; ?></p>
@@ -61,6 +61,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         <div class="centered"><input type="submit" value="Register" class="btn submit"></div>
     </form>
     </div>
-<?php include "footer.php" ?>
+<?php include "./templates/footer.php" ?>
 </body>
 </html>

@@ -1,6 +1,6 @@
 <?php
 session_start();
-require "db.php";
+require "./includes/db.php";
 
 $error="";
 if(!isset($_SESSION["username"])){
@@ -33,10 +33,11 @@ $count=0;
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./assets/style.css">
     <title>Profile</title>
 </head>
 <body>
-    <?php include "header.php"; ?>
+    <?php include "./templates/header.php"; ?>
     <h1> <?php echo $username ?>'s Profile</h1>
     <div class="profile">
         <?php if($username === $_SESSION['username']){ ?>
@@ -55,6 +56,6 @@ $count=0;
                 <h3><?php echo $count ?>. <a href="viewPost.php?id=<?php echo $usrPost['id'] ?>" class="linkBlue"><?php echo $usrPost['title'] ?></a></h3>
        <?php } } ?>
         </div>
-<?php include "footer.php" ?>
+<?php include "./templates/footer.php" ?>
 </body>
 </html>

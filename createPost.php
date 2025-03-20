@@ -1,6 +1,11 @@
 <?php 
 session_start();
-require "db.php";
+require "./includes/db.php";
+
+if(!isset($_SESSION["username"])){
+    header("location: login.php?loginToSeePosts");
+    exit;
+}
 
 $error = "";
 $username = $_SESSION["username"];
@@ -36,11 +41,11 @@ if($stmt->execute()){
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="./assets/style.css">
     <title>Document</title>
 </head>
 <body>
-    <?php include "header.php" ?>
+    <?php include "./templates/header.php" ?>
     <h1>Create Post</h1>
     <p class="error"><?php if($error) echo $error ?></p>
 <div class="formContainer">
@@ -52,6 +57,6 @@ if($stmt->execute()){
         <div class="centered"><input type="submit" class="btn submit" value="Submit Post"></div>
     </form>
 </div>
-<?php include "footer.php" ?>
+<?php include "./templates/footer.php" ?>
 </body>
 </html>

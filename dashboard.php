@@ -1,6 +1,6 @@
 <?php 
 session_start();
-require "db.php";
+require "./includes/db.php";
 
 if(!isset($_SESSION["username"])){
     header("location: login.php?loginToSeePosts");
@@ -33,12 +33,12 @@ $entries = $stmt->fetchAll(PDO::FETCH_ASSOC);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="./assets/style.css">
     <title>Dashboard</title>
 
 </head>
 <body>
-<?php include "header.php"; ?>
+<?php include "./templates/header.php" ?>
 <!-- Loading Spinner -->
 <div class="container">
     <h1>Dashboard</h1>
@@ -66,7 +66,7 @@ $entries = $stmt->fetchAll(PDO::FETCH_ASSOC);
             </div>
         <?php } ?>
     </div>
-<?php include "footer.php" ?>
+<?php include "./templates/footer.php" ?>
 </body>
 </html>
 <script>
